@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import BoxComponent from './components/BoxComponent';
+import DisplayComponent from './components/DisplayComponent';
 
 function App() {
+  const [allBoxes, setallBoxes] = useState([])
+
+
+
+  const addNewBox = (box) => {
+    console.log(box);
+    const addNewBox = [...allBoxes]
+    addNewBox.push(box);
+    setallBoxes(addNewBox)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BoxComponent addNewBox={addNewBox}/>
+      <DisplayComponent allBoxes={allBoxes}/>
     </div>
   );
 }
+
 
 export default App;
